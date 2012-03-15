@@ -1,0 +1,8 @@
+    name: HealthControl
+    main: me.JamieSinn.Bukkit.HealthControl
+    version: 1.0
+    description: >
+                 HealthControl Plugin.
+    commands:
+      heal:
+        description: Heals a/the player.
