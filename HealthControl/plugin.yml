@@ -6,3 +6,5 @@
     commands:
       heal:
         description: Heals a/the player.
+      seehealth:
+        description: Allows you to see a/the players health.

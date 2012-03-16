@@ -24,7 +24,7 @@ public class HealthControl extends JavaPlugin {
 	public void onEnable()
 	{
 		PluginDescriptionFile pdfFile = this.getDescription();
-		this.logger.info(pdfFile.getName() + " Version" + pdfFile.getVersion() +  " Has Been Successfully Enabled!");
+		this.logger.info(pdfFile.getName() + " Version " + pdfFile.getVersion() +  " Has Been Successfully Enabled!");
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
@@ -36,6 +36,7 @@ public class HealthControl extends JavaPlugin {
 			{
 				player.setHealth(20);
 				player.sendMessage(ChatColor.GREEN + "Healed");
+				player.setFireTicks(0);
 			}
 			else if(args.length == 1)
 			{
@@ -44,7 +45,29 @@ public class HealthControl extends JavaPlugin {
 				Player targetPlayer1 = player.getServer().getPlayer(args [0]);
 				targetPlayer1.setHealth(20);
 				targetPlayer1.setFireTicks(0);
-				player.sendMessage("Healed");
+				player.sendMessage(ChatColor.GREEN + "Healed By:" + sender);
+				}
+			}
+			else
+			{
+				player.sendMessage(ChatColor.RED + "PLAYER NOT ONLINE");
+			}
+		}
+		if (commandLabel.equalsIgnoreCase("seehealth"))
+		{
+			if (args.length == 0)
+			{
+
+				player.sendMessage(ChatColor.GREEN + "Your Health is:" + player.getHealth());
+
+			}
+			else if(args.length == 1)
+			{
+				if(player.getServer().getPlayer(args[0]) !=null)
+				{
+				Player targetPlayer1 = player.getServer().getPlayer(args [0]);
+
+			 player.sendMessage(ChatColor.GREEN  + "Target Player Health is:" + targetPlayer1.getHealth());
 				}
 			}
 			else
@@ -56,4 +79,5 @@ public class HealthControl extends JavaPlugin {
 	 
 	
 	}
+
 }
